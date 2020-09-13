@@ -25,5 +25,8 @@ for f in range(0, n):
   else:
   return None  
 
+Linear: O(n) runs it from ground floor to nth floor (loop)
+
+
 
 
