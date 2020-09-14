@@ -125,14 +125,15 @@ class SortingRobot:
 
             while self.can_move_left():
                 self.move_left()
-                if self.compare_item() == 1:
-
-
-                                
-
-
-            # when we compare the robot's item with the list item based on the return value
-            # either move right or move left
+                if self.compare_item() == 1:   
+                    self.swap_item()
+                    print(f'line 130 poisition {self._position}')
+                    print(f'line 124 item-value {self._item}')
+                if self.compare_item() == -1:
+                    self.set_light_on()             
+        self.swap_item()
+        # when we compare the robot's item with the list item based on the return value
+        # either move right or move left
 
 
 
