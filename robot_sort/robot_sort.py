@@ -99,10 +99,13 @@ class SortingRobot:
         # currently the robot has an item with value None. it needs to be swapped with the item at index 0 in the list
         # if self.item is None then swap it with the first value. since we cannot use self.item value 
         # we can use compare_item instead of self.item == None
-        initial  = compare_item()
+        initial  = self.compare_item()
         if initial is None:
-        # Now robot has the first item in the list also use ff    
-            swap_item()
+            # Now robot has the first item in the list
+            self.swap_item()
+            # let us set a flag value True/False so that we can move left or right. use head light
+            self.set_light_on()
+            print(self._item)
 
 
 if __name__ == "__main__":
