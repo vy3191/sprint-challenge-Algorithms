@@ -99,12 +99,14 @@ class SortingRobot:
         # currently the robot has an item with value None. it needs to be swapped with the item at index 0 in the list
         # if self.item is None then swap it with the first value. since we cannot use self.item value 
         # we can use compare_item instead of self.item == None
-        initial  = self.compare_item()
-        if initial is None:
-            # Now robot has the first item in the list
-            self.swap_item()
-            # let us set a flag value True/False so that we can move left or right. use head light
+        # self.compare_item()      
+           
+        # let us set a flag value True/False so that we can move left or right. use head light
         self.set_light_on()
+        # Now robot has the first item in the list
+        self.swap_item()
+        #let us move right once
+        self.move_right()
         
         # while the robot head light is on keep moving right and swaping the items
         while self.light_is_on():
@@ -113,25 +115,36 @@ class SortingRobot:
             print(f'position {self._position}')
             # move to the right if robot can move to the right
             # move to the right as long as it can swap with smaller values
-            while self.can_move_right():
-                self.move_right()
-                print(f'item value now {self._item}')
-                if self.compare_item() == -1:
-                    self.swap_item()
-                    print(f'line 123 poisition {self._position}')
-                    print(f'item value line 124 {self._item}')
-                if self.compare_item() == 1:
-                    self.set_light_on()
+            while self.compare_item() is not None:
+                while self.can_move_right():                
+                    print(f'item value now {self._item}')
+                    if self.compare_item() == -1:
+                        self.swap_item()
+                        self.set_light_on()
+                        self.move_right()
+                        print(f'line 123 poisition {self._position}')
+                        print(f'item value line 124 {self._item}')
+                    else:
+                        self.move_right()
 
-            while self.can_move_left():
-                self.move_left()
-                if self.compare_item() == 1:   
-                    self.swap_item()
-                    print(f'line 130 poisition {self._position}')
-                    print(f'line 124 item-value {self._item}')
-                if self.compare_item() == -1:
-                    self.set_light_on()             
-        self.swap_item()
+                
+
+                while self.can_move_left() and self.compare_item() is not None:
+                   
+                    if self.compare_item() == 1:   
+                        self.swap_item()
+                        self.set_light_on()
+                        self.move_left()
+                        print(f'line 130 poisition {self._position}')
+                        print(f'line 124 item-value {self._item}')
+                    else:
+                        self.move_left()    
+                            
+            self.swap_item()
+            self.move_right()
+            self.swap_item()
+            self.move_right()
+        self.swap_item()    
         # when we compare the robot's item with the list item based on the return value
         # either move right or move left
 
