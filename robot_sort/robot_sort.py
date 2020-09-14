@@ -104,8 +104,36 @@ class SortingRobot:
             # Now robot has the first item in the list
             self.swap_item()
             # let us set a flag value True/False so that we can move left or right. use head light
-            self.set_light_on()
-            print(self._item)
+        self.set_light_on()
+        
+        # while the robot head light is on keep moving right and swaping the items
+        while self.light_is_on():
+            # Turn the light off otherwise it will infinite loop
+            self.set_light_off()
+            print(f'position {self._position}')
+            # move to the right if robot can move to the right
+            # move to the right as long as it can swap with smaller values
+            while self.can_move_right():
+                self.move_right()
+                print(f'item value now {self._item}')
+                if self.compare_item() == -1:
+                    self.swap_item()
+                    print(f'line 123 poisition {self._position}')
+                    print(f'item value line 124 {self._item}')
+                if self.compare_item() == 1:
+                    self.set_light_on()
+
+            while self.can_move_left():
+                self.move_left()
+                if self.compare_item() == 1:
+
+
+                                
+
+
+            # when we compare the robot's item with the list item based on the return value
+            # either move right or move left
+
 
 
 if __name__ == "__main__":
