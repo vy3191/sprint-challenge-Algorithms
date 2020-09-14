@@ -91,13 +91,18 @@ class SortingRobot:
         Returns True if the robot's light is on and False otherwise.
         """
         return self._light == "ON"
-
     def sort(self):
         """
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        # currently the robot has an item with value None. it needs to be swapped with the item at index 0 in the list
+        # if self.item is None then swap it with the first value. since we cannot use self.item value 
+        # we can use compare_item instead of self.item == None
+        initial  = compare_item()
+        if initial is None:
+        # Now robot has the first item in the list also use ff    
+            swap_item()
 
 
 if __name__ == "__main__":
